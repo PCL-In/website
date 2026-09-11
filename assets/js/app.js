@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const REPO = "PCL-In/PCL-In";
+  const REPO = "PCL-In/desktop";
   const API = "https://api.github.com/repos/" + REPO + "/releases";
   const DL = "https://github.com/" + REPO + "/releases/download";
   const ARCH_ORDER = ["x64", "arm64"];

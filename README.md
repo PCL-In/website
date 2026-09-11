@@ -2,7 +2,7 @@
 
 PCL-In 官方下载站的源码仓库，通过 GitHub Pages 部署在 <https://pclin.astras.cc>。
 
-启动器本体在另一个仓库：[PCL-In/PCL-In](https://github.com/PCL-In/PCL-In)。
+启动器本体在另一个仓库：[PCL-In/desktop](https://github.com/PCL-In/desktop)。
 
 ## 目录说明
 
@@ -41,7 +41,7 @@ PCL-In 官方下载站的源码仓库，通过 GitHub Pages 部署在 <https://p
 ## 数据来源
 
 下载链接、版本号、SHA256、文件大小均自动从启动器仓库的 GitHub Releases 获取
-（读取 `https://api.github.com/repos/PCL-In/PCL-In/releases`，友好模式的版本下拉框会列出最近 20 个版本）。
+（读取 `https://api.github.com/repos/PCL-In/desktop/releases`，友好模式的版本下拉框会列出最近 20 个版本）。
 当无法联网或接口不可用时，页面会回退到内置的当前版本信息，因此地址始终可用。
 
 ## 部署
