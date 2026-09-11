@@ -137,11 +137,6 @@
             <button class="mode-btn active" type="button" role="tab" data-mode="friendly" aria-selected="true">友好模式</button>
           </div>
           <p class="mode-hint" id="mode-hint">友好模式：选择你的设备类型，接着按引导选择版本与配置，自动匹配最适合的下载文件。</p>
-          <label class="switch" title="通过第三方代理 ghproxy.net 转发 GitHub 下载链接，适合直连较慢的情况">
-            <input type="checkbox" id="proxy-toggle" />
-            <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
-            <span class="switch-text">下载加速<small>ghproxy.net</small></span>
-          </label>
         </div>
 
         <p class="proxy-hint" id="proxy-hint" hidden><svg class="ico" width="14" height="14"><use href="#i-info"/></svg><span>已启用 <strong>ghproxy.net</strong> 代理：下载链接会经第三方服务转发，文件内容不变，建议仍按 SHA256 校验。</span></p>
@@ -165,6 +160,7 @@
               <a class="linkbtn" id="sig-x64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-x64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
             </div>
             <div class="c-act">
+              <button class="proxy-btn" type="button" data-proxy-toggle aria-pressed="false" title="通过 ghproxy.net 代理下载"><svg class="ico" width="13" height="13"><use href="#i-globe"/></svg>代理</button>
               <a class="btn btn-primary btn-sm" id="dl-x64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-x64.exe" target="_blank" rel="noopener"><svg class="ico" width="15" height="15"><use href="#i-download"/></svg>下载</a>
             </div>
           </div>
@@ -180,6 +176,7 @@
               <a class="linkbtn" id="sig-arm64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-arm64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
             </div>
             <div class="c-act">
+              <button class="proxy-btn" type="button" data-proxy-toggle aria-pressed="false" title="通过 ghproxy.net 代理下载"><svg class="ico" width="13" height="13"><use href="#i-globe"/></svg>代理</button>
               <a class="btn btn-primary btn-sm" id="dl-arm64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-arm64.exe" target="_blank" rel="noopener"><svg class="ico" width="15" height="15"><use href="#i-download"/></svg>下载</a>
             </div>
           </div>

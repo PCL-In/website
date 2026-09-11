@@ -65,9 +65,37 @@
   /* ---------------- 下载加速（ghproxy.net） ---------------- */
   function proxied(url) { return (state.useProxy && url) ? PROXY_BASE + url : url; }
 
+  // 页面上所有「代理」按钮与当前状态保持一致
+  function syncProxyButtons() {
+    document.querySelectorAll("[data-proxy-toggle]").forEach(function (b) {
+      b.classList.toggle("on", state.useProxy);
+      b.setAttribute("aria-pressed", state.useProxy ? "true" : "false");
+    });
+  }
+
+  function toggleProxy() {
+    state.useProxy = !state.useProxy;
+    try { localStorage.setItem(PROXY_KEY, state.useProxy ? "1" : "0"); } catch (e) {}
+    applyProxy();
+  }
+
+  // 生成一个「代理」小按钮，放在下载按钮旁边
+  function makeProxyButton() {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "proxy-btn" + (state.useProxy ? " on" : "");
+    b.setAttribute("data-proxy-toggle", "");
+    b.setAttribute("aria-pressed", state.useProxy ? "true" : "false");
+    b.title = "通过 ghproxy.net 代理下载";
+    b.innerHTML = '<svg class="ico" width="13" height="13"><use href="#i-globe"/></svg>代理';
+    b.addEventListener("click", function (e) { e.stopPropagation(); toggleProxy(); });
+    return b;
+  }
+
   function applyProxy() {
     const hint = $("proxy-hint");
     if (hint) hint.hidden = !state.useProxy;
+    syncProxyButtons();
     if (state.latest) applyNormal(state.latest);
     if (fm.assets && fm.assets.length && $("friendly-modal").classList.contains("show")) updateFriendlyResult();
   }
@@ -304,6 +332,7 @@
         sb.addEventListener("click", function (e) { e.stopPropagation(); showShaModal(a.name, a.sha256); });
         group.appendChild(sb);
       }
+      group.appendChild(makeProxyButton());
       const dl = document.createElement("a");
       dl.className = "fm-btn-dl"; dl.textContent = "下载"; dl.href = proxied(a.url);
       dl.setAttribute("target", "_blank"); dl.setAttribute("rel", "noopener");
@@ -406,19 +435,13 @@
       else if ($("sha-modal").classList.contains("show")) closeShaModal();
     });
 
-    // 下载加速开关（ghproxy.net），状态记录在 localStorage
+    // 下载加速（ghproxy.net）：状态记录在 localStorage，页面上每个「代理」按钮都会同步
     let savedProxy = null;
     try { savedProxy = localStorage.getItem(PROXY_KEY); } catch (e) {}
     state.useProxy = savedProxy === "1";
-    const proxyToggle = $("proxy-toggle");
-    if (proxyToggle) {
-      proxyToggle.checked = state.useProxy;
-      proxyToggle.addEventListener("change", function () {
-        state.useProxy = proxyToggle.checked;
-        try { localStorage.setItem(PROXY_KEY, state.useProxy ? "1" : "0"); } catch (e) {}
-        applyProxy();
-      });
-    }
+    document.querySelectorAll("[data-proxy-toggle]").forEach(function (b) {
+      b.addEventListener("click", toggleProxy);
+    });
     applyProxy();
 
     // 先渲染内置数据，保证页面永不为空
