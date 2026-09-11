@@ -137,7 +137,14 @@
             <button class="mode-btn active" type="button" role="tab" data-mode="friendly" aria-selected="true">友好模式</button>
           </div>
           <p class="mode-hint" id="mode-hint">友好模式：选择你的设备类型，接着按引导选择版本与配置，自动匹配最适合的下载文件。</p>
+          <label class="switch" title="通过第三方代理 ghproxy.net 转发 GitHub 下载链接，适合直连较慢的情况">
+            <input type="checkbox" id="proxy-toggle" />
+            <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+            <span class="switch-text">下载加速<small>ghproxy.net</small></span>
+          </label>
         </div>
+
+        <p class="proxy-hint" id="proxy-hint" hidden><svg class="ico" width="14" height="14"><use href="#i-info"/></svg><span>已启用 <strong>ghproxy.net</strong> 代理：下载链接会经第三方服务转发，文件内容不变，建议仍按 SHA256 校验。</span></p>
 
         <div id="view-normal" hidden>
           <div class="dlrow dlrow--head">

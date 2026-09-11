@@ -7,6 +7,9 @@
   const DL = "https://github.com/" + REPO + "/releases/download";
   const ARCH_ORDER = ["x64", "arm64"];
   const STORE_KEY = "pclinDownloadMode";
+  // ghproxy.net 代理下载：https://ghproxy.net/<原始 GitHub 直链>
+  const PROXY_BASE = "https://ghproxy.net/";
+  const PROXY_KEY = "pclinUseProxy";
 
   // 内置回退数据（与 v1.0.0 保持一致），在无法联网时使用
   const STATIC = {
@@ -19,7 +22,7 @@
     ]
   };
 
-  const state = { releases: [], latest: null, mode: "normal", device: { isMobile: false, arch: null } };
+  const state = { releases: [], latest: null, mode: "normal", useProxy: false, device: { isMobile: false, arch: null } };
   const fm = { release: null, assets: [], arch: null, pkg: null };
 
   /* ---------------- helpers ---------------- */
@@ -59,6 +62,16 @@
     };
   }
 
+  /* ---------------- 下载加速（ghproxy.net） ---------------- */
+  function proxied(url) { return (state.useProxy && url) ? PROXY_BASE + url : url; }
+
+  function applyProxy() {
+    const hint = $("proxy-hint");
+    if (hint) hint.hidden = !state.useProxy;
+    if (state.latest) applyNormal(state.latest);
+    if (fm.assets && fm.assets.length && $("friendly-modal").classList.contains("show")) updateFriendlyResult();
+  }
+
   /* ---------------- 普通模式渲染 ---------------- */
   function applyNormal(rel) {
     state.latest = rel;
@@ -71,8 +84,8 @@
       const a = rel.assets.find((x) => archOf(x.name) === arch);
       if (!a) return;
       if (a.size) { const s = $("size-" + arch); if (s) s.textContent = mb(a.size); }
-      const dl = $("dl-" + arch); if (dl) dl.setAttribute("href", a.url);
-      const sig = $("sig-" + arch); if (sig) sig.setAttribute("href", a.url + ".asc");
+      const dl = $("dl-" + arch); if (dl) dl.setAttribute("href", proxied(a.url));
+      const sig = $("sig-" + arch); if (sig) sig.setAttribute("href", proxied(a.url + ".asc"));
       const sha = a.sha256 || "";
       if (sha) {
         const code = $("code-" + arch); if (code) code.textContent = a.name + "\n" + sha;
@@ -292,7 +305,7 @@
         group.appendChild(sb);
       }
       const dl = document.createElement("a");
-      dl.className = "fm-btn-dl"; dl.textContent = "下载"; dl.href = a.url;
+      dl.className = "fm-btn-dl"; dl.textContent = "下载"; dl.href = proxied(a.url);
       dl.setAttribute("target", "_blank"); dl.setAttribute("rel", "noopener");
       group.appendChild(dl);
 
@@ -392,6 +405,21 @@
       if ($("friendly-modal").classList.contains("show")) closeFriendlyModal();
       else if ($("sha-modal").classList.contains("show")) closeShaModal();
     });
+
+    // 下载加速开关（ghproxy.net），状态记录在 localStorage
+    let savedProxy = null;
+    try { savedProxy = localStorage.getItem(PROXY_KEY); } catch (e) {}
+    state.useProxy = savedProxy === "1";
+    const proxyToggle = $("proxy-toggle");
+    if (proxyToggle) {
+      proxyToggle.checked = state.useProxy;
+      proxyToggle.addEventListener("change", function () {
+        state.useProxy = proxyToggle.checked;
+        try { localStorage.setItem(PROXY_KEY, state.useProxy ? "1" : "0"); } catch (e) {}
+        applyProxy();
+      });
+    }
+    applyProxy();
 
     // 先渲染内置数据，保证页面永不为空
     applyNormal(staticRelease());
