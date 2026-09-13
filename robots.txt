@@ -1,0 +1,15 @@
+# PCL-In 下载站 · https://pclin.astras.cc/
+# 全站可抓取；站点是纯静态单页，没有需要屏蔽的目录。
+
+User-agent: *
+Allow: /
+
+# Bing / Microsoft（Bingbot 与 Googlebot 共用同一套抓取规则）
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# 结构化数据 / IndexNow 说明见 README 的「SEO」一节
+Sitemap: https://pclin.astras.cc/sitemap.xml

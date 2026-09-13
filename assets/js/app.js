@@ -100,6 +100,19 @@
     if (fm.assets && fm.assets.length && $("friendly-modal").classList.contains("show")) updateFriendlyResult();
   }
 
+  // 让 JSON-LD 里的软件版本跟着 Release 走（支持 JS 的爬虫能拿到最新版本号）
+  function syncStructuredData(tag) {
+    try {
+      const el = document.querySelector('script[type="application/ld+json"][data-pclin]');
+      if (!el || !tag) return;
+      const data = JSON.parse(el.textContent);
+      (data["@graph"] || []).forEach(function (node) {
+        if (node.softwareVersion) node.softwareVersion = String(tag).replace(/^v/i, "");
+      });
+      el.textContent = JSON.stringify(data);
+    } catch (e) {}
+  }
+
   /* ---------------- 普通模式渲染 ---------------- */
   function applyNormal(rel) {
     state.latest = rel;
@@ -107,6 +120,7 @@
     $("release-name").textContent = rel.name;
     $("hero-updated").textContent = rel.publishedAt ? fmtDate(rel.publishedAt) : STATIC.publishedAt;
     const link = $("release-link"); if (link) link.setAttribute("href", "https://github.com/" + REPO + "/releases/tag/" + rel.tag);
+    syncStructuredData(rel.tag);
 
     ARCH_ORDER.forEach(function (arch) {
       const a = rel.assets.find((x) => archOf(x.name) === arch);

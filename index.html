@@ -3,9 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PCL-In — 为非正版玩家准备的 Minecraft 启动器</title>
-  <meta name="description" content="PCL-In 是基于 PCL Community Edition (PCL CE) 的二次 fork：使用第三方皮肤站或离线档案时不再被强制进入试玩模式，移除全部赞助提示，改用本仓库的独立更新机制。Windows 10 1809+ / .NET 10 Desktop Runtime。" />
+  <title>PCL-In — 为非正版玩家准备的 Minecraft 启动器｜离线登录 · 第三方皮肤站 · 基于 PCL CE</title>
+  <meta name="description" content="PCL-In 是基于 PCL CE 的 Minecraft 启动器：用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案时不再被强制进入试玩模式，移除全部赞助提示，改用仓库自己的更新机制。Windows 10 1809+，提供 x64 / ARM64 安装包与 SHA256、GPG 签名。" />
   <meta name="color-scheme" content="light dark" />
+
+  <!-- ================= SEO ================= -->
+  <link rel="canonical" href="https://pclin.astras.cc/" />
+  <meta name="keywords" content="PCL-In,PCL CE,PCL2,Minecraft 启动器,我的世界启动器,离线登录,第三方皮肤站,Authlib,Yggdrasil Connect,微软登录,正版登录,非正版,联机,开源启动器,Windows 启动器" />
+  <meta name="application-name" content="PCL-In" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0b5bcb" />
+
+  <!-- 微软 / Bing 生态 -->
+  <meta name="msapplication-TileColor" content="#0b5bcb" />
+  <meta name="msapplication-square150x150logo" content="https://pclin.astras.cc/assets/img/logo.png" />
+  <!-- Bing 网站管理员工具（Webmaster Tools）验证：把后台给的验证码填进下面这行并取消注释即可，
+       验证后可在后台提交 sitemap、看 IndexNow 收录报表。
+       <meta name="msvalidate.01" content="在这里粘贴验证码" /> -->
+
+  <!-- 分享卡片 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PCL-In" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:url" content="https://pclin.astras.cc/" />
+  <meta property="og:title" content="PCL-In — 为非正版玩家准备的 Minecraft 启动器｜离线登录 · 第三方皮肤站 · 基于 PCL CE" />
+  <meta property="og:description" content="PCL-In 是基于 PCL CE 的 Minecraft 启动器：用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案时不再被强制进入试玩模式，移除全部赞助提示，改用仓库自己的更新机制。Windows 10 1809+，提供 x64 / ARM64 安装包与 SHA256、GPG 签名。" />
+  <meta property="og:image" content="https://pclin.astras.cc/assets/img/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PCL-In — 为非正版玩家准备的 Minecraft 启动器｜离线登录 · 第三方皮肤站 · 基于 PCL CE" />
+  <meta name="twitter:description" content="PCL-In 是基于 PCL CE 的 Minecraft 启动器：用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案时不再被强制进入试玩模式，移除全部赞助提示，改用仓库自己的更新机制。Windows 10 1809+，提供 x64 / ARM64 安装包与 SHA256、GPG 签名。" />
+  <meta name="twitter:image" content="https://pclin.astras.cc/assets/img/logo.png" />
+
+  <!-- 预连接：页面用 GitHub Releases API 取版本，并从 GitHub / ghproxy 下载 -->
+  <link rel="preconnect" href="https://api.github.com" />
+  <link rel="preconnect" href="https://github.com" />
+  <link rel="dns-prefetch" href="https://ghproxy.net" />
+
+  <!-- 结构化数据：WebSite / Organization / SoftwareApplication / FAQPage。
+       软件版本号由 assets/js/app.js 在取到 Release 后同步更新。 -->
+  <script type="application/ld+json" data-pclin="ld">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://pclin.astras.cc/#website","url":"https://pclin.astras.cc/","name":"PCL-In","alternateName":"PCL-In 下载站","description":"PCL-In 是基于 PCL CE 的 Minecraft 启动器：用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案时不再被强制进入试玩模式，移除全部赞助提示，改用仓库自己的更新机制。Windows 10 1809+，提供 x64 / ARM64 安装包与 SHA256、GPG 签名。","inLanguage":"zh-CN","publisher":{"@id":"https://pclin.astras.cc/#org"}},{"@type":"Organization","@id":"https://pclin.astras.cc/#org","name":"PCL-In","url":"https://github.com/PCL-In/desktop","logo":{"@type":"ImageObject","url":"https://pclin.astras.cc/assets/img/logo.png"},"sameAs":["https://github.com/PCL-In/desktop","https://github.com/PCL-In/website"]},{"@type":"SoftwareApplication","@id":"https://pclin.astras.cc/#app","name":"PCL-In","alternateName":"PCL-In 启动器","applicationCategory":"GameApplication","applicationSubCategory":"Minecraft 启动器","operatingSystem":"Windows 10 1809 (17763) 或更高版本 · Windows 11","softwareVersion":"1.0.3","softwareHelp":"https://github.com/PCL-In/desktop#readme","downloadUrl":"https://github.com/PCL-In/desktop/releases/latest","releaseNotes":"https://github.com/PCL-In/desktop/releases","license":"https://www.apache.org/licenses/LICENSE-2.0","inLanguage":"zh-CN","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@id":"https://pclin.astras.cc/#org"}},{"@type":"FAQPage","@id":"https://pclin.astras.cc/#faq","inLanguage":"zh-CN","mainEntity":[{"@type":"Question","name":"PCL-In 和 PCL2 / PCL CE 是什么关系？","acceptedAnswer":{"@type":"Answer","text":"PCL-In 是基于 PCL Community Edition (PCL CE) 的二次 fork，由本仓库独立开发与维护；上游 PCL CE 又源自 PCL2。"}},{"@type":"Question","name":"用第三方皮肤站或离线档案会被强制「试玩模式」吗？","acceptedAnswer":{"@type":"Answer","text":"不会。这是 PCL-In 相对上游最核心的改动：使用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案时，不再被强制进入试玩模式，可直接正常游戏。"}},{"@type":"Question","name":"正版登录需要填写应用密钥吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。微软登录采用 OAuth 2.0 设备码流（RFC 8628），属于公开客户端，只需要一个公开的 client_id：启动器显示一个设备码，你在浏览器中登录并授权即可，程序内不保存任何 secret。"}},{"@type":"Question","name":"怎么确认下载的文件没有被篡改？","acceptedAnswer":{"@type":"Answer","text":"在下载目录打开终端执行 certutil -hashfile PCL-In-x64.exe SHA256，把结果与下载页「SHA256」按钮复制到的哈希值比对；也可以导入仓库中的 GPG 公钥后校验 .asc 签名。"}},{"@type":"Question","name":"如何反馈问题或提交建议？","acceptedAnswer":{"@type":"Answer","text":"请前往 GitHub Issues 提交，附上启动器日志（设置 → 日志）与复现步骤会更快得到处理。"}}]}]}</script>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="256x256" href="assets/img/logo.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />

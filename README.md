@@ -71,3 +71,28 @@ PCL-In 官方下载站的源码仓库，通过 GitHub Pages 部署在 <https://p
 唯一需要手动跟的是**离线回退数据**：`assets/js/app.js` 顶部的 `STATIC`（版本号、日期、
 两个安装包的 size 与 sha256）以及 `index.html` 里 `vX.Y.Z` 形式的兜底链接，
 它们只在浏览器无法访问 GitHub API 时才会用到；不改不影响正常访问，但离线打开时页面会显示旧版本号。
+
+## SEO
+
+站内能自动做的部分都已经自动，每次推送到 `main` 都会生效：
+
+| 项目 | 位置 | 说明 |
+| --- | --- | --- |
+| `robots.txt` | 站点根目录 | 全站可抓取，末尾给出 sitemap 地址 |
+| `sitemap.xml` | 站点根目录 | 目前只有一个 URL；**新增页面时要手动加进去** |
+| canonical / OG / Twitter | `index.html` `<head>` | 统一指向 `https://pclin.astras.cc/`，带分享大图 |
+| 结构化数据（JSON-LD） | `index.html` `<head>` | `WebSite` + `Organization` + `SoftwareApplication` + `FAQPage`；软件版本由 `app.js` 取到 Release 后同步 |
+| IndexNow | `.github/workflows/pages.yml` + 根目录的 `<key>.txt` | 部署完成后自动把首页提交给 IndexNow，Bing / Yandex 几分钟内来抓；失败只打日志，不影响部署 |
+| `404.html` | 站点根目录 | 自定义 404，带 `noindex, follow` |
+
+### 只有站长能做的一次性操作
+
+1. **Bing 网站管理员工具**（对 Bing 收录影响最大）：<https://www.bing.com/webmasters>
+   添加 `https://pclin.astras.cc/`，用「HTML meta 标记」验证——把后台给的验证码填进
+   `index.html` 里 `msvalidate.01` 那一行并取消注释，然后提交一次 `sitemap.xml`。
+   之后 IndexNow 的收录情况也能在该后台看到。
+2. **Google Search Console**（可选）：<https://search.google.com/search-console>
+   同样添加站点并提交 `https://pclin.astras.cc/sitemap.xml`。
+   Google 不支持 IndexNow，只能靠 sitemap + 抓取。
+3. **Cloudflare 不要拦搜索引擎**：确认 `Security → Bots` 没有开启会拦截已验证爬虫的模式
+   （Bot Fight Mode 会挡 Bingbot / Googlebot）。本站经 Cloudflare 代理，这一步容易被忽略。

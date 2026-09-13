@@ -51,6 +51,15 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
+      - name: Submit to IndexNow (Bing / Yandex)
+        run: |
+          KEY="0f2d4ec4e15449cca2e7226fc510ca97"
+          code=$(curl -sS -m 25 -o /dev/null -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"pclin.astras.cc\",\"key\":\"${KEY}\",\"keyLocation\":\"https://pclin.astras.cc/${KEY}.txt\",\"urlList\":[\"https://pclin.astras.cc/\"]}" || true)
+          echo "IndexNow HTTP ${code} (200/202 = accepted; failure is ignored)"
+
       - name: Clean up old github-pages artifacts
         if: always()
         env:
