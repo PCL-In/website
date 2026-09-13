@@ -67,3 +67,7 @@ PCL-In 官方下载站的源码仓库，通过 GitHub Pages 部署在 <https://p
 
 启动器仓库发布新的 GitHub Release 后，只要包含 `PCL-In-x64.exe` / `PCL-In-arm64.exe`
 （及其 `.asc` / `.sha256`），本站的普通模式与友好模式都会自动展示新版本，无需改代码。
+
+唯一需要手动跟的是**离线回退数据**：`assets/js/app.js` 顶部的 `STATIC`（版本号、日期、
+两个安装包的 size 与 sha256）以及 `index.html` 里 `vX.Y.Z` 形式的兜底链接，
+它们只在浏览器无法访问 GitHub API 时才会用到；不改不影响正常访问，但离线打开时页面会显示旧版本号。

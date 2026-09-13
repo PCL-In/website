@@ -26,6 +26,7 @@
 <!-- 图标：Lucide (https://lucide.dev，ISC 许可)。内联为 SVG sprite，无外部依赖。 -->
 <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
   <symbol id="i-cpu" viewBox="0 0 24 24"><path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/><path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/><path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/><path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></symbol>
   <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
   <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
@@ -99,6 +100,7 @@
         <ul class="facts">
           <li><svg class="ico" width="15" height="15"><use href="#i-check"/></svg>Windows 10 1809 (17763) 及以上</li>
           <li><svg class="ico" width="15" height="15"><use href="#i-check"/></svg>需要 .NET 10 Desktop Runtime</li>
+            <li><svg class="ico" width="15" height="15"><use href="#i-check"/></svg>内嵌聊天室需 WebView2 运行时（Win11 / 新版 Edge 的 Win10 自带）</li>
           <li><svg class="ico" width="15" height="15"><use href="#i-check"/></svg>根目录 Apache-2.0 开源</li>
         </ul>
       </div>
@@ -106,13 +108,13 @@
       <aside class="panel release-panel" aria-label="最新版本">
         <div class="panel-head">
           <h2 class="panel-title"><svg class="ico" width="16" height="16"><use href="#i-badge-check"/></svg>最新版本</h2>
-          <a class="link-sm" id="release-link" href="https://github.com/PCL-In/desktop/releases/tag/v1.0.0" target="_blank" rel="noopener">Release 页面<svg class="ico" width="13" height="13"><use href="#i-external-link"/></svg></a>
+          <a class="link-sm" id="release-link" href="https://github.com/PCL-In/desktop/releases/tag/v1.0.3" target="_blank" rel="noopener">Release 页面<svg class="ico" width="13" height="13"><use href="#i-external-link"/></svg></a>
         </div>
         <div class="rel-ver-row">
-          <span class="rel-ver" id="hero-version">v1.0.0</span>
+          <span class="rel-ver" id="hero-version">v1.0.3</span>
           <span class="rel-date"><svg class="ico" width="13" height="13"><use href="#i-clock"/></svg><span id="hero-updated">2026-09-06</span></span>
         </div>
-        <p class="rel-name" id="release-name">PCL-In v1.0.0</p>
+        <p class="rel-name" id="release-name">PCL-In v1.0.3</p>
         <dl class="kv">
           <div><dt>平台</dt><dd>Windows 10 / 11</dd></div>
           <div><dt>架构</dt><dd>x64 &middot; ARM64</dd></div>
@@ -127,7 +129,7 @@
     <div class="wrap">
       <header class="sec-head">
         <h2>下载</h2>
-        <p>页面加载时会从 GitHub Releases 自动读取最新版本；离线时回退到内置的 v1.0.0。</p>
+        <p>页面加载时会从 GitHub Releases 自动读取最新版本；离线时回退到内置的 v1.0.3。</p>
       </header>
 
       <div class="panel">
@@ -157,11 +159,11 @@
             <div class="c-size"><span id="size-x64">17.79 MB</span></div>
             <div class="c-check">
               <button class="linkbtn" type="button" data-copy="917e3c9fba8a044e1c50226c62ea299b13d8dfa22dc5e418eb6a90e85e2bc7c1"><svg class="ico" width="13" height="13"><use href="#i-copy"/></svg>SHA256</button>
-              <a class="linkbtn" id="sig-x64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-x64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
+              <a class="linkbtn" id="sig-x64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.3/PCL-In-x64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
             </div>
             <div class="c-act">
               <button class="proxy-btn" type="button" data-proxy-toggle aria-pressed="false" title="通过 ghproxy.net 代理下载"><svg class="ico" width="13" height="13"><use href="#i-globe"/></svg>代理</button>
-              <a class="btn btn-primary btn-sm" id="dl-x64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-x64.exe" target="_blank" rel="noopener"><svg class="ico" width="15" height="15"><use href="#i-download"/></svg>下载</a>
+              <a class="btn btn-primary btn-sm" id="dl-x64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.3/PCL-In-x64.exe" target="_blank" rel="noopener"><svg class="ico" width="15" height="15"><use href="#i-download"/></svg>下载</a>
             </div>
           </div>
 
@@ -173,11 +175,11 @@
             <div class="c-size"><span id="size-arm64">17.56 MB</span></div>
             <div class="c-check">
               <button class="linkbtn" type="button" data-copy="ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944"><svg class="ico" width="13" height="13"><use href="#i-copy"/></svg>SHA256</button>
-              <a class="linkbtn" id="sig-arm64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-arm64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
+              <a class="linkbtn" id="sig-arm64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.3/PCL-In-arm64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
             </div>
             <div class="c-act">
               <button class="proxy-btn" type="button" data-proxy-toggle aria-pressed="false" title="通过 ghproxy.net 代理下载"><svg class="ico" width="13" height="13"><use href="#i-globe"/></svg>代理</button>
-              <a class="btn btn-primary btn-sm" id="dl-arm64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.0/PCL-In-arm64.exe" target="_blank" rel="noopener"><svg class="ico" width="15" height="15"><use href="#i-download"/></svg>下载</a>
+              <a class="btn btn-primary btn-sm" id="dl-arm64" href="https://github.com/PCL-In/desktop/releases/download/v1.0.3/PCL-In-arm64.exe" target="_blank" rel="noopener"><svg class="ico" width="15" height="15"><use href="#i-download"/></svg>下载</a>
             </div>
           </div>
 
@@ -225,7 +227,7 @@
     <div class="wrap">
       <header class="sec-head">
         <h2>与上游 PCL CE 的差异</h2>
-        <p>PCL-In 只改动验证与更新相关的行为，其余启动器能力与上游保持一致。</p>
+        <p>PCL-In 主要改动验证与更新相关的行为，另外额外加入了一个可关闭的内嵌聊天室；其余启动器能力与上游保持一致。</p>
       </header>
       <div class="table-wrap">
         <table class="cmp">
@@ -252,6 +254,15 @@
               <th scope="row">微软正版登录</th>
               <td>支持</td>
               <td>支持（OAuth 设备码流，公开客户端，无需应用密钥）</td>
+            </tr>
+            <tr>
+              <th scope="row">内嵌聊天室</th>
+              <td>无</td>
+              <td class="yes"><svg class="ico" width="15" height="15"><use href="#i-check"/></svg>顶部「聊天」标签页，可单独隐藏</td>
+            </tr>
+            <tr>
+              <th scope="row">联机（公告服务器不可用时）</th>
+              <td colspan="2" class="span-note">PCL-In 会回退到本地默认值，仍可用 EasyTier / 陶瓦进行 P2P 联机</td>
             </tr>
             <tr>
               <th scope="row">版本安装 / 整合包 / Mod / 多实例</th>
@@ -289,6 +300,10 @@
         <div class="spec-item">
           <svg class="ico" width="18" height="18"><use href="#i-languages"/></svg>
           <div><h3>多语言界面</h3><p>提供简体中文、繁体中文与英文三套界面，可在设置中随时切换。</p></div>
+        </div>
+        <div class="spec-item">
+          <svg class="ico" width="18" height="18"><use href="#i-message"/></svg>
+          <div><h3>内嵌聊天室</h3><p>顶部导航多了一个「聊天」标签页，直接在内嵌的 MiniChat 里聊天，不用另外开浏览器；不需要它时可在「设置 → 功能隐藏」里单独关掉。</p></div>
         </div>
         <div class="spec-item">
           <svg class="ico" width="18" height="18"><use href="#i-scale"/></svg>

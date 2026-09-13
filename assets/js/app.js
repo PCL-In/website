@@ -11,14 +11,14 @@
   const PROXY_BASE = "https://ghproxy.net/";
   const PROXY_KEY = "pclinUseProxy";
 
-  // 内置回退数据（与 v1.0.0 保持一致），在无法联网时使用
+  // 内置回退数据（与 v1.0.3 保持一致），在无法联网时使用
   const STATIC = {
-    tag: "v1.0.0",
-    name: "PCL-In v1.0.0",
-    publishedAt: "2026-09-06",
+    tag: "v1.0.3",
+    name: "PCL-In v1.0.3",
+    publishedAt: "2026-09-13",
     assets: [
-      { name: "PCL-In-x64.exe", size: 17.79 * 1048576, sha256: "917e3c9fba8a044e1c50226c62ea299b13d8dfa22dc5e418eb6a90e85e2bc7c1" },
-      { name: "PCL-In-arm64.exe", size: 17.56 * 1048576, sha256: "ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944" }
+      { name: "PCL-In-x64.exe", size: 19782712, sha256: "99cd975af3bb858447d4a0ee4d27176690ce95d5b0cdd6e606bb3681d68895b3" },
+      { name: "PCL-In-arm64.exe", size: 19520578, sha256: "68a2003a9fcec177d25911432d0cb077c12727f10c904923637eb555c108b843" }
     ]
   };
 
